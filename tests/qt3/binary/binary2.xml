@@ -1,4 +1,4 @@
-<test-set xmlns="http://www.w3.org/2010/09/qt-fots-catalog" name="expath-binary">
+<test-set xmlns="http://www.w3.org/2010/09/qt-fots-catalog" name="expath-binary2">
   <description> Tests for the extension functions in the EXPath "binary" package. Takem from the
     internal BaseX test cases.</description>
   <link type="spec" document="http://expath.org/spec/binary"/>
@@ -661,7 +661,7 @@
     <environment ref="binary"/>
     <test>bin:insert-before(xs:base64Binary(xs:hexBinary("")), -1, ())</test>
     <result>
-      <error code="Q{http://expath.org/ns/binary}index-out-of-range"/>
+      <assert-eq>xs:base64Binary("")</assert-eq>
     </result>
   </test-case>
   <test-case name="bin-insert-before11">
@@ -670,7 +670,7 @@
     <environment ref="binary"/>
     <test>bin:insert-before(xs:base64Binary(xs:hexBinary("")), 1, ())</test>
     <result>
-      <error code="Q{http://expath.org/ns/binary}index-out-of-range"/>
+      <assert-eq>xs:base64Binary("")</assert-eq>
     </result>
   </test-case>
   <test-case name="bin-pad-left1">

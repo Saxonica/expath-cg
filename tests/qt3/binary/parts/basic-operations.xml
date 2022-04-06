@@ -78,13 +78,9 @@
     </test-case>
     <test-case>
       <description>Join with type mismatch sequences</description>
-      <modified by="John Lumley" on="2014-08-13" change="Admit static type-check errors"/>
       <test> bin:join(($man.base,123)) </test>
       <result>
-        <any-of>
-          <error code="Q{http://www.w3.org/2005/xqt-errors}FORG0006"/>
-          <error code="Q{http://www.w3.org/2005/xqt-errors}XPTY0004"/>
-        </any-of>
+        <error code="Q{http://www.w3.org/2005/xqt-errors.}FORG0006"/>
       </result>
     </test-case>
   </expand>

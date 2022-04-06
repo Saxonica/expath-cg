@@ -808,8 +808,10 @@
             </result>
    </test-case>
    <test-case name="EXPath-binary-encode-string-005">
-      <description>encode-string on a non-empty string - UTF-16 - no control over
-                BOM</description>
+      <description>encode-string on a non-empty string - UTF-16 - no control over BOM
+        Note (MHK 2021-06-21): the expected results assume UTF-16BE with BOM. This
+        isn't mandated by the spec, but it seems a reasonable thing to aim for.
+      </description>
       <created by="John Lumley" on="2013-07-18"/>
       <modified by="John Lumley" on="2014-08-11" change="consistent EXPath naming"/>
       <environment ref="EXPath-binary"/>
@@ -819,8 +821,11 @@
             </result>
    </test-case>
    <test-case name="EXPath-binary-encode-string-006">
-      <description>encode-string on a non-empty string - UTF-16 - no control over
-                BOM</description>
+      <description>
+        encode-string on a non-empty string - UTF-16 - no control over BOM.
+        Note (MHK 2021-06-21): the expected results assume UTF-16BE with BOM. This
+        isn't mandated by the spec, but it seems a reasonable thing to aim for.
+      </description>
       <created by="John Lumley" on="2013-07-18"/>
       <modified by="John Lumley"
        on="2014-08-12"
@@ -1867,13 +1872,15 @@
       <description>unpack-unsigned-integer on long </description>
       <created by="John Lumley" on="2013-07-22"/>
       <modified by="John Lumley" on="2014-08-11" change="consistent EXPath naming"/>
+      <modified by="Michael Kay" on="2021-05-10"
+        change="fix bug https://github.com/expath/expath-cg/issues/116"/>
       <environment ref="EXPath-binary.numeric"/>
       <test>
                 bin:unpack-unsigned-integer(xs:base64Binary(xs:hexBinary('ffffffffffffffff')),0,8,'most-significant-first') </test>
       <result>
         <all-of>
             <assert-type>xs:integer</assert-type>
-            <assert-eq>-1</assert-eq>
+            <assert-eq>18446744073709551615</assert-eq>
         </all-of>
       </result>
    </test-case>
