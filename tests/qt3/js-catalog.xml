@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://www.w3.org/2010/09/qt-fots-catalog" 
+         test-suite="EXPATH" version="0.1">
+
+  <!-- This catalog is a Saxonica variant for the SaxonJS product which currently
+       has fewer capabilities for reading binary files. -->
+
+  <environment name="empty">
+    <!-- The context item MUST be undefined/absent for queries run in
+         this environment. -->
+    <!-- The test query will always be an expression, and if necessary
+         an empty context can be achieved by wrapping the expression
+         as the body of a function -->
+    </environment>
+   
+    <test-set name="expath-file"           file="file/file.xml"/>  
+    <test-set name="expath-binary"         file="binary/binary.xml"/>
+    <test-set name="expath-binary2"        file="binary/binary2.xml"/>
+    <!--test-set name="expath-archive"        file="archive/archive.xml"/-->
+</catalog>
