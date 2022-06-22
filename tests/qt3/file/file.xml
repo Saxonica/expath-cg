@@ -628,6 +628,7 @@
     <modified by="Christian Grün" on="2013-11-20" change="Alternative without BOM added"/>
     <modified by="John Lumley" on="2014-08-11" change="consistent EXPath naming"/>
     <modified by="Michael Kay" on="2021-08-30" change="Alternative little-endian result with a single BOM"/>
+    <modified by="Michael Kay" on="2021-08-30" change="Alternative big-endian result with no BOM"/>
     <environment ref="EXPath-file"/>
     <test>
         (if (file:exists("sandpit/test3.txt")) 
@@ -645,6 +646,8 @@
                   xs:hexBinary("FEFF0061FEFF0062FEFF0063")</assert>
           <assert>xs:hexBinary(Q{http://expath.org/ns/file}read-binary("sandpit/test3.txt")) eq
             xs:hexBinary("FFFE610062006300")</assert>
+          <assert>xs:hexBinary(Q{http://expath.org/ns/file}read-binary("sandpit/test3.txt")) eq
+            xs:hexBinary("610062006300")</assert>
         </any-of>
       </all-of>
     </result>
@@ -881,6 +884,28 @@
         <!--<assert>Q{http://expath.org/ns/file}exists("sandpit/dirtarget/paris.txt")</assert>
         <assert>Q{http://expath.org/ns/file}read-text("sandpit/dirtarget/paris.txt") eq
           "paris"</assert>-->
+        <assert>Q{http://expath.org/ns/file}exists("sandpit/dirsource/london.txt")</assert>
+      </all-of>
+    </result>
+  </test-case>
+  
+  <test-case name="EXPath-file-copy-006">
+    <description>file:copy used to copy a source file to a target file, target directory does not exist (Saxon bug 5577</description>
+    <created by="Michael Kay" on="2022-06-22"/>
+    <environment ref="EXPath-file"/>
+    <test>
+      if (file:exists("sandpit/dirsource")) then file:delete("sandpit/dirsource", true()) else (),
+      if (file:exists("sandpit/dirtarget")) then file:delete("sandpit/dirtarget", true()) else (),
+      file:create-dir("sandpit/dirsource"),
+      file:append-text("sandpit/dirsource/london.txt", "london"),
+      file:copy("sandpit/dirsource/london.txt", "sandpit/dirtarget/new-london.txt")
+    </test>
+    <result>
+      <all-of>
+        <assert-empty/>
+        <assert>Q{http://expath.org/ns/file}exists("sandpit/dirtarget/new-london.txt")</assert>
+        <assert>Q{http://expath.org/ns/file}read-text("sandpit/dirtarget/new-london.txt") eq
+          "london"</assert>
         <assert>Q{http://expath.org/ns/file}exists("sandpit/dirsource/london.txt")</assert>
       </all-of>
     </result>
@@ -2368,6 +2393,7 @@
     <created by="Michael Kay" on="2012-06-11"/>
     <modified by="John Lumley" on="2014-08-11" change="consistent EXPath naming"/>
     <modified by="Michael Kay" on="2021-08-30" change="alternative little-endian result"/>
+    <modified by="Michael Kay" on="2022-04-14" change="more permitted results: with/without BOM, LE/BE"/>
     <environment ref="EXPath-file"/>
     <test>
         (if (file:exists("sandpit/test3.txt")) 
@@ -2382,6 +2408,10 @@
             xs:hexBinary("FFFE610062006300")</assert>
           <assert>xs:hexBinary(Q{http://expath.org/ns/file}read-binary("sandpit/test3.txt")) eq
             xs:hexBinary("FEFF006100620063")</assert>
+          <assert>xs:hexBinary(Q{http://expath.org/ns/file}read-binary("sandpit/test3.txt")) eq
+            xs:hexBinary("006100620063")</assert>
+          <assert>xs:hexBinary(Q{http://expath.org/ns/file}read-binary("sandpit/test3.txt")) eq
+            xs:hexBinary("610062006300")</assert>
         </any-of>
       </all-of>
     </result>
