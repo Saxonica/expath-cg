@@ -2281,6 +2281,66 @@
       </all-of>
     </result>
   </test-case>
+  
+  <test-case name="EXPath-binary-unpack-integer-016">
+    <description>unpack unsigned integer, BE, 2 octets</description>
+    <created by="Michael Kay after Olivier Xillo" on="2022-09-18"/>
+    <environment ref="EXPath-binary.numeric"/>
+    <test>
+      bin:unpack-unsigned-integer(bin:hex('8008'),0,2,'BE')
+    </test>
+    <result>
+      <all-of>
+        <assert-type>xs:integer</assert-type>
+        <assert-eq>32776</assert-eq>
+      </all-of>
+    </result>
+  </test-case>
+  
+  <test-case name="EXPath-binary-unpack-integer-017">
+    <description>unpack unsigned integer, LE, 2 octets</description>
+    <created by="Michael Kay after Olivier Xillo" on="2022-09-18"/>
+    <environment ref="EXPath-binary.numeric"/>
+    <test>
+      bin:unpack-unsigned-integer(bin:hex('8008'),0,2,'LE')
+    </test>
+    <result>
+      <all-of>
+        <assert-type>xs:integer</assert-type>
+        <assert-eq>2176</assert-eq>
+      </all-of>
+    </result>
+  </test-case>
+  
+  <test-case name="EXPath-binary-unpack-integer-018">
+    <description>unpack signed integer, BE, 2 octets</description>
+    <created by="Michael Kay after Olivier Xillo" on="2022-09-18"/>
+    <environment ref="EXPath-binary.numeric"/>
+    <test>
+      bin:unpack-integer(bin:hex('8008'),0,2,'BE')
+    </test>
+    <result>
+      <all-of>
+        <assert-type>xs:integer</assert-type>
+        <assert-eq>-32760</assert-eq>
+      </all-of>
+    </result>
+  </test-case>
+  
+  <test-case name="EXPath-binary-unpack-integer-019">
+    <description>unpack signed integer, LE, 2 octets (Saxon bug 5690)</description>
+    <created by="Michael Kay after Olivier Xillo" on="2022-09-18"/>
+    <environment ref="EXPath-binary.numeric"/>
+    <test>
+      bin:unpack-integer(bin:hex('8008'),0,2,'LE')
+    </test>
+    <result>
+      <all-of>
+        <assert-type>xs:integer</assert-type>
+        <assert-eq>2176</assert-eq>
+      </all-of>
+    </result>
+  </test-case>
 
   <test-case name="EXPath-binary-bitwise-or-001">
     <description>bitwise-or with differing lengths</description>
