@@ -2833,6 +2833,7 @@
   <test-case name="EXPath-file-children-002">
     <description>Return children of non-empty directory</description>
     <created by="Christian Grün" on="2015-01-29"/>
+    <modified by="Michael Kay" on="2023-04-21" change="avoid namespace dependency in test assertion"/>
     <environment ref="EXPath-file"/>
     <test>
       if (file:exists("sandpit/dir5")) then file:delete("sandpit/dir5", true()) else (),
@@ -2844,7 +2845,7 @@
     <result>
       <all-of>
         <assert>count($result) = 2</assert>
-        <assert>every $r in $result satisfies contains($r, file:dir-separator())</assert>
+        <assert>every $r in $result satisfies contains($r, Q{http://expath.org/ns/file}dir-separator())</assert>
         <assert>some $r in $result satisfies ends-with($r, 'roma.txt')</assert>
         <assert>some $r in $result satisfies ends-with($r, 'napoli.txt')</assert>
       </all-of>
@@ -2854,6 +2855,7 @@
   <test-case name="EXPath-file-children-003">
     <description>Return single child (directory) of non-empty directory</description>
     <created by="Christian Grün" on="2015-01-29"/>
+    <modified by="Michael Kay" on="2023-04-21" change="avoid namespace dependency in test assertion"/>
     <environment ref="EXPath-file"/>
     <test>
       if (file:exists("sandpit/dir5")) then file:delete("sandpit/dir5", true()) else (),
@@ -2863,7 +2865,7 @@
     <result>
       <all-of>
         <assert>count($result) = 1</assert>
-        <assert>ends-with($result, file:dir-separator())</assert>
+        <assert>ends-with($result, Q{http://expath.org/ns/file}dir-separator())</assert>
       </all-of>
     </result>
   </test-case>
