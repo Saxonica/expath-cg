@@ -16,11 +16,11 @@
         <sandpit path="sandpit2"/>
 
         <param name="test1.ZIP"
-             select="Q{http://expath.org/ns/file}read-binary('sandpit/test1.zip')"/>
+             select="Q{http://expath.org/ns/file}read-binary('test1.zip')"/>
         <param name="test1.ZIP.BROKEN"
-             select="Q{http://expath.org/ns/binary}part(Q{http://expath.org/ns/file}read-binary('sandpit/test1.zip'),4,50)"/>
+             select="Q{http://expath.org/ns/binary}part(Q{http://expath.org/ns/file}read-binary('test1.zip'),4,50)"/>
         <param name="test3.ZIP"
-             select="Q{http://expath.org/ns/file}read-binary('sandpit/test3.zip')"/>
+             select="Q{http://expath.org/ns/file}read-binary('test3.zip')"/>
 
         <param name="textA" select="'textA.txt'"/>
 
@@ -37,11 +37,11 @@
         <sandpit path="sandpit2"/>
 
         <param name="test1.ZIP"
-             select="Q{http://expath.org/ns/file}read-binary('sandpit/test1.zip')"/>
+             select="Q{http://expath.org/ns/file}read-binary('test1.zip')"/>
         <param name="test1.ZIP.BROKEN"
-             select="Q{http://expath.org/ns/binary}part(Q{http://expath.org/ns/file}read-binary('sandpit/test1.zip'),4,50)"/>
+             select="Q{http://expath.org/ns/binary}part(Q{http://expath.org/ns/file}read-binary('test1.zip'),4,50)"/>
         <param name="test3.ZIP"
-             select="Q{http://expath.org/ns/file}read-binary('sandpit/test3.zip')"/>
+             select="Q{http://expath.org/ns/file}read-binary('test3.zip')"/>
 
         <param name="textA" select="'textA.txt'"/>
         <param name="known.test1"
