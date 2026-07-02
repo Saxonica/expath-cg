@@ -8,7 +8,7 @@
 
   <environment name="EXPath-file">
     <namespace prefix="file" uri="http://expath.org/ns/file"/>
-    <sandpit path="sandpit" cwd="parent"/>
+    <sandpit path="../file"/>
   </environment>
 
   <test-case name="EXPath-file-exists-001">
